@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="Li.css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-form">
+        <form>
+            <h2>User information</h2>
+            <p>
+            <h3>user name: 
+                <script>
+                    var oReq = new XMLHttpRequest();
+                    oReq.open("POST", "http://localhost:8081");
+                    oReq.send('name');
+                </script>
+            </h3>
+            <h3>user old:</h3>
+            <h3>user best score:</h3>
+            <a href="mdjg://">게임 플레이</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>로그인</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="Li.css">
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+</head>
+<body>
+  <div class="login-form">
+    <form method="POST">
+        <h2>LOGIN</h2>
+      <input  id = "id" type="text" name="email" class="text-field" placeholder="ID">
+      <input id="pw" type="password" name="password" class="text-field" placeholder="PW"><br>
+      <input type="submit" value="LOGIN" class="submit-btn" onclick="login()">
+    </form>
+    <div class="links">
+      <a href="majg://">sign up</a>
+      <br>
+      <a href="mcjg://">can't login?</a>
+    </div>
+  </div>
+  <div id='result'></div>
+  <script>
+    function login(){
+      const id=document.getElementById('id').value;//입력한 아이디의 값을 받아옴
+      const pw=document.getElementById('pw').value;//입력한 패스워드의 값을 받아옴
+      saveToFile_Chrome("input.txt",id+'\n'+pw);//input이라는 파일에 저장 
+      check_login();//로그인 체크함수 호출
+      for(var i=0;i<1000000000;i++){i+1;}
+      //auth_login();
+      //alert("check");
+      /*var oReq = new XMLHttpRequest();
+      oReq.open("POST", "http://localhost:8080");
+      oReq.send('favicon.ico');*/
+    }
+    function check_login(){
+      let exec = document.createElement("a");//a태그 값을 가진 변수 exec선언 및 초기화
+      exec.setAttribute("href", "mbjg://");//exec의 href를 mbjg://라는 링크로 설정
+      exec.click();//exec의 클릭 이벤트를 강제실행
+    }
+    function saveToFile_Chrome(fileName, content) {
+      let blob = new Blob([content], { type: 'text/plain' });//objURL을 파일내용으로 초기화 
+      objURL = window.URL.createObjectURL(blob);  
+      // 이전에 생성된 메모리 해제
+      if (window.__Xr_objURL_forCreatingFile__) {
+          window.URL.revokeObjectURL(window.__Xr_objURL_forCreatingFile__);
+      }
+      window.__Xr_objURL_forCreatingFile__ = objURL;//objURL의 값을 파일로 생성
+
+      let a = document.createElement('a');//a태그 값을 가진 변수 a선언 및 초기화
+      a.download = fileName;//fileName을 다운로드경로로 설정
+      a.href = objURL;//a의 href값을 objURL로 설정
+      a.click();//a의 클릭 이벤트를 강제 실행
+    }
+</script>
+</body>
+</html>
